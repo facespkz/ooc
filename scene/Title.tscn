@@ -1,0 +1,311 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://asset/font/unifont-outline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://asset/font/unifont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/title/bg_scroll.gd" type="Script" id=3]
+[ext_resource path="res://src/title/title_buttons.gd" type="Script" id=4]
+[ext_resource path="res://asset/gui/button_atlas.png" type="Texture" id=5]
+[ext_resource path="res://asset/title/sp.png" type="Texture" id=6]
+[ext_resource path="res://asset/background/bg_titleroom.png" type="Texture" id=7]
+[ext_resource path="res://asset/title/mp.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 1, 1, 0.4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.05, 0.05, 0.05, 1 )
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.25, 0.25, 0.25, 1 )
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.196078 )
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.8, 1, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0.196078 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 0.133333 )
+border_width_left = 4
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 0.501961 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.184314, 0.231373, 0.239216, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0980392, 0.113725, 0.156863, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 1 )
+border_width_bottom = 3
+border_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 0.498039 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 16.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 8, 8 )
+margin = Rect2( 2, 6, 4, 6 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 8, 0, 8, 8 )
+margin = Rect2( 2, 6, 4, 6 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.2, 0.2, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.1, 0.1, 0.1, 1 )
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Theme" id=21]
+default_font = ExtResource( 2 )
+Button/colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+Button/colors/font_color_disabled = Color( 0.25098, 0.25098, 0.25098, 1 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 0.6, 0.6, 0.6, 1 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+ItemList/styles/bg = SubResource( 6 )
+ItemList/styles/bg_focus = null
+Label/fonts/font = ExtResource( 1 )
+Label/styles/normal = null
+LineEdit/colors/selection_color = Color( 0, 0.501961, 1, 1 )
+LineEdit/styles/focus = SubResource( 7 )
+LineEdit/styles/normal = SubResource( 8 )
+LineEdit/styles/read_only = SubResource( 8 )
+MenuButton/fonts/font = ExtResource( 1 )
+Panel/styles/panel = null
+PopupMenu/styles/hover = SubResource( 9 )
+PopupMenu/styles/panel = SubResource( 10 )
+ProgressBar/styles/bg = SubResource( 11 )
+ProgressBar/styles/fg = SubResource( 12 )
+RichTextLabel/fonts/normal_font = ExtResource( 1 )
+RichTextLabel/styles/normal = null
+TabContainer/constants/side_margin = 4
+TabContainer/styles/panel = SubResource( 13 )
+TabContainer/styles/tab_bg = SubResource( 14 )
+TabContainer/styles/tab_disabled = SubResource( 15 )
+TabContainer/styles/tab_fg = SubResource( 16 )
+TextEdit/colors/selection_color = Color( 0, 0.501961, 1, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0, 0, 0, 1 )
+ToolButton/colors/font_color = Color( 1, 1, 1, 0.6 )
+ToolButton/fonts/font = ExtResource( 1 )
+TooltipLabel/colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+TooltipPanel/styles/panel = SubResource( 17 )
+WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
+WindowDialog/constants/title_height = 16
+WindowDialog/icons/close = SubResource( 18 )
+WindowDialog/icons/close_highlight = SubResource( 19 )
+WindowDialog/styles/panel = SubResource( 20 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 21 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 3 )
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2048, 1280 )
+
+[node name="Bricks" type="Sprite" parent="ParallaxBackground/Background"]
+modulate = Color( 0.5, 0.5, 0.5, 1 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2048, 1280 )
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -159.0
+margin_top = -29.0
+margin_right = 1.0
+margin_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 2, 2 )
+bbcode_enabled = true
+bbcode_text = "[center]OwO[/center]"
+text = "OwO"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -140.0
+margin_top = -28.0
+margin_right = -4.0
+margin_bottom = -3.99997
+text = "Edit characters"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButtons" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.0
+margin_top = -27.0
+margin_right = 66.0
+margin_bottom = 29.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Singleplayer" type="Button" parent="PlayButtons"]
+margin_right = 64.0
+margin_bottom = 56.0
+icon = ExtResource( 6 )
+
+[node name="Multiplayer" type="Button" parent="PlayButtons"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 56.0
+custom_constants/hseparation = 0
+icon = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -73.0
+margin_top = -35.0
+margin_right = -33.0
+margin_bottom = -19.0
+text = "poop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Editor" to="." method="_on_Editor_pressed"]
+[connection signal="pressed" from="PlayButtons/Singleplayer" to="." method="_on_Singleplayer_pressed"]
+[connection signal="pressed" from="PlayButtons/Multiplayer" to="." method="_on_Multiplayer_pressed"]

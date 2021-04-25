@@ -1,0 +1,577 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://src/editor/expose_config.gd" type="Script" id=1]
+[ext_resource path="res://src/class/timeline/panel.gd" type="Script" id=2]
+[ext_resource path="res://src/editor/scroll_spinbox.gd" type="Script" id=3]
+[ext_resource path="res://asset/editor/pause/normal.tres" type="Texture" id=4]
+[ext_resource path="res://asset/editor/play/hover.tres" type="Texture" id=5]
+[ext_resource path="res://asset/editor/pause/hover.tres" type="Texture" id=6]
+[ext_resource path="res://asset/editor/play/pressed.tres" type="Texture" id=7]
+[ext_resource path="res://asset/editor/play_from_start/normal.tres" type="Texture" id=8]
+[ext_resource path="res://asset/editor/pause/pressed.tres" type="Texture" id=9]
+[ext_resource path="res://asset/editor/play_from_start/hover.tres" type="Texture" id=10]
+[ext_resource path="res://asset/editor/play/normal.tres" type="Texture" id=11]
+[ext_resource path="res://asset/editor/play_from_start/pressed.tres" type="Texture" id=12]
+[ext_resource path="res://asset/editor/add/hover.tres" type="Texture" id=13]
+[ext_resource path="res://asset/editor/remove/hover.tres" type="Texture" id=14]
+[ext_resource path="res://asset/editor/add/normal.tres" type="Texture" id=15]
+[ext_resource path="res://asset/editor/add/pressed.tres" type="Texture" id=16]
+[ext_resource path="res://asset/editor/remove/pressed.tres" type="Texture" id=17]
+[ext_resource path="res://asset/editor/remove/normal.tres" type="Texture" id=18]
+[ext_resource path="res://src/editor/update_animation_options.gd" type="Script" id=19]
+[ext_resource path="res://asset/theme.tres" type="Theme" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.184314, 0.231373, 0.239216, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0980392, 0.113725, 0.156863, 1 )
+
+[sub_resource type="ImageTexture" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 21 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+spriteframes = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -190.0
+margin_bottom = -79.0
+rect_min_size = Vector2( 184, 0 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.00006
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 181.0
+margin_bottom = 16.0
+text = "Configuration"
+
+[node name="HeadSep" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 20.0
+margin_right = 181.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+margin_top = 28.0
+margin_right = 181.0
+margin_bottom = 201.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+margin_right = 181.0
+margin_bottom = 173.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Speed" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 181.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed"]
+margin_left = 29.0
+margin_top = 4.0
+margin_right = 99.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 70, 0 )
+text = "Speed"
+align = 1
+
+[node name="Speed" type="SpinBox" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed"]
+margin_left = 103.0
+margin_right = 151.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 0 )
+max_value = 200.0
+value = 60.0
+align = 1
+script = ExtResource( 3 )
+
+[node name="Size" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 181.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size"]
+margin_top = 4.0
+margin_right = 52.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.67
+text = "Size"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size"]
+margin_left = 56.0
+margin_right = 180.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Width" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width"]
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+text = "X"
+align = 1
+
+[node name="SizeX" type="SpinBox" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width"]
+margin_left = 12.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+min_value = 8.0
+max_value = 256.0
+step = 2.0
+value = 32.0
+align = 1
+script = ExtResource( 3 )
+
+[node name="Height" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height"]
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+text = "Y"
+align = 1
+
+[node name="SizeY" type="SpinBox" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height"]
+margin_left = 12.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+min_value = 8.0
+max_value = 256.0
+step = 2.0
+value = 32.0
+align = 1
+script = ExtResource( 3 )
+
+[node name="CharacterPrivacy" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 181.0
+margin_bottom = 80.0
+alignment = 1
+__meta__ = {
+"_editor_description_": "whenever logins are implemented, this will be revisibled"
+}
+
+[node name="IsPrivate" type="CheckBox" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/CharacterPrivacy"]
+margin_left = 2.0
+margin_right = 94.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+hint_tooltip = "Restricts usage to whoever
+created the character."
+text = "Private"
+flat = true
+
+[node name="SetPassword" type="Button" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/CharacterPrivacy"]
+margin_left = 98.0
+margin_right = 178.0
+margin_bottom = 24.0
+disabled = true
+text = "Password"
+
+[node name="FootSep" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 205.0
+margin_right = 181.0
+margin_bottom = 209.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 213.0
+margin_right = 181.0
+margin_bottom = 265.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
+margin_right = 181.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.67
+text = "Thumbnail Offset"
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimThumbOffset" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 181.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Width" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset"]
+margin_left = 28.0
+margin_right = 88.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width"]
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+text = "X"
+align = 1
+
+[node name="SizeX" type="SpinBox" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width"]
+margin_left = 12.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+max_value = 256.0
+step = 2.0
+align = 1
+script = ExtResource( 3 )
+
+[node name="Height" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset"]
+margin_left = 92.0
+margin_right = 152.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height"]
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+text = "Y"
+align = 1
+
+[node name="SizeY" type="SpinBox" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height"]
+margin_left = 12.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+max_value = 256.0
+step = 2.0
+align = 1
+script = ExtResource( 3 )
+
+[node name="PickerHeader" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 269.0
+margin_right = 181.0
+margin_bottom = 285.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PickerHeader"]
+margin_right = 141.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+text = "Current Animation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New" type="TextureButton" parent="Panel/VBoxContainer/PickerHeader"]
+margin_left = 145.0
+margin_right = 161.0
+margin_bottom = 16.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 13 )
+
+[node name="Delete" type="TextureButton" parent="Panel/VBoxContainer/PickerHeader"]
+margin_left = 165.0
+margin_right = 181.0
+margin_bottom = 16.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 14 )
+
+[node name="AnimationPicker" type="OptionButton" parent="Panel/VBoxContainer"]
+margin_top = 289.0
+margin_right = 181.0
+margin_bottom = 313.0
+text = "placeholder"
+flat = true
+clip_text = true
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpriteFrameEditor" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+rect_min_size = Vector2( 164, 56 )
+rect_clip_content = true
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SpriteFrameEditor"]
+anchor_right = 1.0
+anchor_bottom = 0.987
+margin_left = 52.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.96001
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Playback" type="HBoxContainer" parent="SpriteFrameEditor/VBoxContainer"]
+margin_right = 584.0
+margin_bottom = 16.0
+custom_constants/separation = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="SpriteFrameEditor/VBoxContainer/Playback"]
+margin_left = 266.0
+margin_right = 282.0
+margin_bottom = 16.0
+hint_tooltip = "Play animation from cursor"
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="TextureButton" parent="SpriteFrameEditor/VBoxContainer/Playback"]
+margin_left = 284.0
+margin_right = 300.0
+margin_bottom = 16.0
+hint_tooltip = "Stop animation"
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 6 )
+
+[node name="FromStart" type="TextureButton" parent="SpriteFrameEditor/VBoxContainer/Playback"]
+margin_left = 302.0
+margin_right = 318.0
+margin_bottom = 16.0
+hint_tooltip = "Play animation from start"
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": "I would've done a loop but I'm shit at doing circles :("
+}
+
+[node name="Timeline" type="ColorRect" parent="SpriteFrameEditor/VBoxContainer"]
+margin_top = 20.0
+margin_right = 584.0
+margin_bottom = 69.0
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.235294 )
+script = ExtResource( 2 )
+
+[node name="FPS" type="VBoxContainer" parent="SpriteFrameEditor"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -48.0
+margin_right = 52.0
+margin_bottom = -14.0
+rect_clip_content = true
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SpriteFrameEditor/FPS"]
+show_behind_parent = true
+margin_top = 1.0
+margin_right = 48.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 48, 0 )
+text = "FPS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="SpriteFrameEditor/FPS"]
+margin_left = 8.0
+margin_top = 17.0
+margin_right = 40.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 32, 0 )
+hint_tooltip = "Scroll-wheel can change FPS"
+size_flags_horizontal = 4
+custom_icons/updown = SubResource( 3 )
+min_value = 1.0
+max_value = 20.0
+value = 6.0
+rounded = true
+align = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileButtons" type="HBoxContainer" parent="SpriteFrameEditor"]
+margin_right = 184.0
+margin_bottom = 24.0
+hint_tooltip = "I'm still not sure on this layout, send me a message if you have any ideas"
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="ToolButton" parent="SpriteFrameEditor/FileButtons"]
+margin_right = 48.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( -147, 76 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="ToolButton" parent="SpriteFrameEditor/FileButtons"]
+margin_left = 48.0
+margin_right = 96.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( -147, 76 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="ToolButton" parent="SpriteFrameEditor/FileButtons"]
+margin_left = 96.0
+margin_right = 144.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( -147, 76 )
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New" type="ToolButton" parent="SpriteFrameEditor/FileButtons"]
+margin_left = 144.0
+margin_right = 184.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( -147, 76 )
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popups" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationNamer" type="ConfirmationDialog" parent="Popups"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -30.0
+margin_right = 110.0
+margin_bottom = 40.0
+window_title = "New animation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Popups/AnimationNamer"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 30.0
+size_flags_vertical = 3
+placeholder_text = "New animation name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" method="_on_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width/SizeX" method="_on_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height/SizeY" method="_on_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width" to="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width/SizeX" method="_on_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height" to="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height/SizeY" method="_on_gui_input"]
+[connection signal="pressed" from="Panel/VBoxContainer/PickerHeader/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/PickerHeader/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="gui_input" from="SpriteFrameEditor/FPS" to="SpriteFrameEditor/FPS/SpinBox" method="_on_gui_input"]

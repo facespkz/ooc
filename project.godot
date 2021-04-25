@@ -1,0 +1,117 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "ColorRect",
+"class": "Draggable",
+"language": "GDScript",
+"path": "res://src/class/timeline/spr_prototypes/tl_draggable.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RTEUser",
+"language": "GDScript",
+"path": "res://src/rte_user_role.gd"
+}, {
+"base": "Label",
+"class": "SkyLabel",
+"language": "GDScript",
+"path": "res://src/class/skylabel.gd"
+}, {
+"base": "SpinBox",
+"class": "SpinBoxScrollable",
+"language": "GDScript",
+"path": "res://src/editor/scroll_spinbox.gd"
+}, {
+"base": "Object",
+"class": "SpriteFrameConverter",
+"language": "GDScript",
+"path": "res://src/class/sf_json_cnvt.gd"
+}, {
+"base": "ColorRect",
+"class": "Timeline",
+"language": "GDScript",
+"path": "res://src/class/timeline/panel.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TimelineHologram",
+"language": "GDScript",
+"path": "res://src/class/timeline/spr_prototypes/tl_hologram.gd"
+}, {
+"base": "ColorRect",
+"class": "TimelineProjector",
+"language": "GDScript",
+"path": "res://src/class/timeline/projector.gd"
+}, {
+"base": "ColorRect",
+"class": "TimelineSlot",
+"language": "GDScript",
+"path": "res://src/class/timeline/spr_prototypes/tl_led.gd"
+}, {
+"base": "FileDialog",
+"class": "UploadManager",
+"language": "GDScript",
+"path": "res://src/class/upman.gd"
+} ]
+_global_script_class_icons={
+"Draggable": "",
+"RTEUser": "",
+"SkyLabel": "",
+"SpinBoxScrollable": "",
+"SpriteFrameConverter": "",
+"Timeline": "res://asset/class/timeline.svg",
+"TimelineHologram": "",
+"TimelineProjector": "",
+"TimelineSlot": "",
+"UploadManager": "res://asset/class/upman-icon.svg"
+}
+
+[application]
+
+config/name="Ourpoke"
+run/main_scene="res://scene/Title.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="pokeftr"
+boot_splash/image="res://asset/godot/abbey.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.184314, 0.231373, 0.239216, 1 )
+config/icon="res://asset/godot/icon.png"
+config/windows_native_icon="res://asset/godot/icon.ico"
+
+[autoload]
+
+AutoScalar="*res://src/auto_scalar.gd"
+
+[debug]
+
+settings/fps/force_fps=72
+
+[display]
+
+window/size/width=640
+window/size/height=400
+window/dpi/allow_hidpi=true
+window/vsync/vsync_via_compositor=true
+window/handheld/orientation="sensor_landscape"
+
+[logging]
+
+file_logging/enable_file_logging=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
+2d/snapping/use_gpu_pixel_snap=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+quality/dynamic_fonts/use_oversampling=false
+quality/2d/use_pixel_snap=true

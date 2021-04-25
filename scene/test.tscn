@@ -1,0 +1,250 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://asset/theme.tres" type="Theme" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 484.0
+margin_bottom = 244.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatLog" type="ScrollContainer" parent="VBoxContainer"]
+margin_right = 484.0
+margin_bottom = 224.0
+size_flags_vertical = 3
+follow_focus = true
+scroll_vertical = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ChatLog"]
+margin_top = -100.0
+margin_right = 472.0
+margin_bottom = 276.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_right = 472.0
+margin_bottom = 34.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+selection_enabled = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 38.0
+margin_right = 472.0
+margin_bottom = 72.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer2"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer2"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 76.0
+margin_right = 472.0
+margin_bottom = 110.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer3"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer3"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 114.0
+margin_right = 472.0
+margin_bottom = 148.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer4"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer4"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 152.0
+margin_right = 472.0
+margin_bottom = 186.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer5"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer5"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 190.0
+margin_right = 472.0
+margin_bottom = 224.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer6"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer6"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 228.0
+margin_right = 472.0
+margin_bottom = 262.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer7"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer7"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 266.0
+margin_right = 472.0
+margin_bottom = 300.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer8"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer8"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 304.0
+margin_right = 472.0
+margin_bottom = 338.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer9"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer9"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="VBoxContainer/ChatLog/VBoxContainer"]
+margin_top = 342.0
+margin_right = 472.0
+margin_bottom = 376.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer10"]
+margin_right = 80.0
+margin_bottom = 34.0
+text = "facespkz"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChatLog/VBoxContainer/HBoxContainer10"]
+margin_left = 84.0
+margin_right = 472.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Lorem ipsum
+dolor"
+fit_content_height = true
+
+[node name="ChatBox" type="LineEdit" parent="VBoxContainer"]
+margin_top = 228.0
+margin_right = 484.0
+margin_bottom = 244.0
+placeholder_text = "Press / to focus"
