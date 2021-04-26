@@ -306,6 +306,7 @@ text = "poop"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Editor" to="." method="_on_Editor_pressed"]
 [connection signal="pressed" from="PlayButtons/Singleplayer" to="." method="_on_Singleplayer_pressed"]
 [connection signal="pressed" from="PlayButtons/Multiplayer" to="." method="_on_Multiplayer_pressed"]

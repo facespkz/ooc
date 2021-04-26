@@ -567,6 +567,7 @@ placeholder_text = "New animation name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width/SizeX" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height/SizeY" method="_on_gui_input"]

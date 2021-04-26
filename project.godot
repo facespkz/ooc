@@ -97,7 +97,6 @@ settings/fps/force_fps=72
 
 window/size/width=640
 window/size/height=400
-window/dpi/allow_hidpi=true
 window/vsync/vsync_via_compositor=true
 window/handheld/orientation="sensor_landscape"
 
