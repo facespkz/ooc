@@ -1,6 +1,7 @@
 extends ColorRect
+class_name TimelineProjector
 
-var texture: Texture setget align_region
+#var texture: Texture setget align_region
 
 var sprite: Sprite = Sprite.new()
 var collision: CollisionShape2D = CollisionShape2D.new()
@@ -18,12 +19,10 @@ var padding: float
 
 var panel: ColorRect
 
-class_name TimelineProjector
 
 func _init():
 	var exit_err
 	var enter_err
-	sprite.texture = texture
 	collision.shape = shape
 	color = colors[0]
 	
@@ -48,14 +47,14 @@ func _enter_tree():
 	padding = panel.padding
 	rect_min_size = box_size2
 	shape.extents = box_size
-	self.texture = load('res://asset/act_test/act_test%s.tres' % get_index())
+	sprite.position = box_size
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 var gui_mouse_down: bool
+var new_index = 5
 
 func _gui_input(event):
 	var ev_name = event.get_class()
@@ -64,11 +63,16 @@ func _gui_input(event):
 		if gui_mouse_down:
 			sprite.position = get_viewport().get_mouse_position()
 			sprite.position -= rect_global_position
-			sprite.z_index = 1337
+			sprite.z_index = 1
 		else:
 			sprite.position = box_size
 			sprite.z_index = 0
+			panel.trade(get_index(), new_index)
 	if ev_name == 'InputEventMouseMotion' && gui_mouse_down:
 		sprite.position += event.relative
+		var target_v2 = sprite.position.x + (padding / 2)
+		var hitbox_width = box_size2.x + padding
+		new_index = int((target_v2 / hitbox_width) + get_index())
+#		print(new_index)
 		pass
 	pass
