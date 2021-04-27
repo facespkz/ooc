@@ -13,6 +13,7 @@ func _ready():
 	anim_name_textbox = $Popups/AnimationNamer/LineEdit
 	timeline = $SpriteFrameEditor/VBoxContainer/Timeline
 	timeline.sprite = $SpriteView/AnimatedSprite
+	spriteframes = timeline.sprite.frames
 	# avoids flicker on Android
 	if OS.get_name() != "Android":
 		OS.low_processor_usage_mode = true
