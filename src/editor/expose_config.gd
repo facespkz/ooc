@@ -44,3 +44,8 @@ func _on_Pause_pressed():
 func _on_FromStart_pressed():
 	timeline.cursor_set(0)
 	timeline.sprite.play()
+
+
+func _on_FPS_changed(value):
+	spriteframes.set_animation_speed(timeline.sprite.animation, value)
+	pass # Replace with function body.
