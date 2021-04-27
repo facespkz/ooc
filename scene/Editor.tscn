@@ -45,12 +45,12 @@
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "stand",
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk",
+"name": "stand",
 "speed": 5.0
 } ]
 
@@ -67,7 +67,7 @@ animations = [ {
 "frames": [ ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "walk",
-"speed": 2.0
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 40 ), ExtResource( 38 ) ],
 "loop": true,
