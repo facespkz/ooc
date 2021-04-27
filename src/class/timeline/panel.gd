@@ -1,22 +1,21 @@
 extends ColorRect
 class_name Timeline, 'res://asset/class/timeline.svg'
 
-var frames: SpriteFrames
-var animation: String
-
+var held: Sprite
+var sprite: AnimatedSprite setget set_sprite
 var sprite_index := 0 setget cursor_set
 var sprite_array: Array
 var thumb_offset: Vector2
-
-export(Vector2) var box_size = Vector2(32, 32)
-export(float) var padding = 8
 
 # c stands for control :3
 var c = {
 	'items': HBoxContainer.new(),
 	'separator': VSeparator.new(),
-	'animation_player': AnimationPlayer.new()
+	'animation_player': AnimationPlayer.new(),
 }
+
+export(Vector2) var box_size = Vector2(32, 32)
+export(float) var padding = 8
 
 
 func _init():
@@ -37,7 +36,7 @@ func _init():
 func _ready():
 	c.items.set('custom_constants/separation', padding)
 	
-	var amount = 20
+	var amount = 4
 	for i in range(amount):
 		sprite_array.append(
 			load('res://asset/act_test/act_test%s.tres' % (i % 4)))
@@ -45,6 +44,13 @@ func _ready():
 	adjust()
 	reset_projectors()
 	pass
+
+
+func set_sprite(new_sprite: AnimatedSprite):
+	sprite = new_sprite
+	new_sprite.connect('frame_changed', self, 'cursor_set', [-1])
+	pass
+
 
 
 func _gui_input(event):
@@ -57,16 +63,12 @@ func _gui_input(event):
 		_: pass
 
 
-func trade(index, new_index):
-	index = clamp(index, 0, c.items.get_child_count() - 1)
+func trade(old_index, new_index):
 	new_index = clamp(new_index, 0, c.items.get_child_count() - 1)
-	if index == new_index:
-		return
-	var sprite = sprite_array[index]
-	var new_sprite = sprite_array[new_index]
-	sprite_array[index] = new_sprite
-	sprite_array[new_index] = sprite
-	print('trading %s with %s' % [index, new_index])
+	
+	var old_sprites = [sprite_array[old_index], sprite_array[new_index]]
+	sprite_array[old_index] = old_sprites[1]
+	sprite_array[new_index] = old_sprites[0]
 	reset_projectors()
 
 # this setup is kinda stupid, but i can't seem to do it the other way
@@ -78,7 +80,22 @@ func reset_projectors():
 
 func cursor_set(new_value: int):
 	var hbox_max = c.items.get_child_count() - 1
+	var delta
+	
+	if new_value == -1:
+		new_value = sprite.frame
+	elif new_value > hbox_max:
+		new_value = hbox_max
+	else:
+		sprite.frame = new_value
+	
+	delta = new_value - sprite_index
 	sprite_index = int(clamp(new_value, 0, hbox_max))
+	
+	if held != null:
+		
+		held.position.x += (box_size.x + padding) * delta
+		
 	adjust()
 
 
