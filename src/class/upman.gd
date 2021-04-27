@@ -5,6 +5,9 @@ signal uploaded(files)
 
 class_name UploadManager, 'res://asset/class/upman-icon.svg'
 
+func _ready() -> void:
+	access = FileDialog.ACCESS_FILESYSTEM
+	mode = FileDialog.MODE_OPEN_FILES
 
 func spawn_file_upload() -> void:
 	file_data = []
