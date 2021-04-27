@@ -2,6 +2,8 @@ extends Control
 
 var anim_name_popup: ConfirmationDialog
 var anim_name_textbox: LineEdit
+var timeline: Timeline
+var sprite: AnimatedSprite
 export var spriteframes: SpriteFrames
 
 # export(AnimatedSprite) var character
@@ -9,6 +11,8 @@ export var spriteframes: SpriteFrames
 func _ready():
 	anim_name_popup = $Popups/AnimationNamer
 	anim_name_textbox = $Popups/AnimationNamer/LineEdit
+	timeline = $SpriteFrameEditor/VBoxContainer/Timeline
+	timeline.sprite = $SpriteView/AnimatedSprite
 	# avoids flicker on Android
 	if OS.get_name() != "Android":
 		OS.low_processor_usage_mode = true
@@ -26,3 +30,16 @@ func _on_Delete_pressed():
 func generate_animation():
 	pass
 
+
+
+func _on_Play_pressed():
+	timeline.sprite.play(timeline.sprite.animation)
+
+
+func _on_Pause_pressed():
+	timeline.sprite.stop()
+
+
+func _on_FromStart_pressed():
+	timeline.cursor_set(0)
+	timeline.sprite.play()
