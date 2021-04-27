@@ -1,7 +1,7 @@
 extends OptionButton
 
 var root_control: Control
-var name_string: String
+var selected_animation: String
 
 signal animation_changed
 
@@ -14,7 +14,6 @@ func _enter_tree():
 	var popup = get_popup()
 	var catchp = popup.connect('about_to_show', self, 'update_animations_popup')
 	var catchpr = popup.connect('index_pressed', self, 'print_idx')
-	prints(catchp, catchpr)
 	if (catchp != OK) or (catchpr != OK):
 		push_error('Animation popup not found.')
 
@@ -22,6 +21,8 @@ func print_idx(index = null):
 	print(index)
 
 func update_animations_popup():
+	var prev_idx = selected
 	clear()
 	for item in root_control.spriteframes.get_animation_names():
 		add_item(item)
+	select(prev_idx)
