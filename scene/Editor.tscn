@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://src/editor/expose_config.gd" type="Script" id=1]
 [ext_resource path="res://src/class/timeline/panel.gd" type="Script" id=2]
@@ -41,19 +41,6 @@
 [ext_resource path="res://snivy/spr_tsuta_walk_3.png" type="Texture" id=39]
 [ext_resource path="res://snivy/spr_tsuta_jump_0.png" type="Texture" id=40]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-} ]
-
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
@@ -93,7 +80,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-spriteframes = SubResource( 1 )
 
 [node name="SpriteView" type="Control" parent="."]
 anchor_right = 1.0
