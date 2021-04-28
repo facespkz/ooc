@@ -13,12 +13,13 @@ func _ready():
 func _enter_tree():
 	var popup = get_popup()
 	var catchp = popup.connect('about_to_show', self, 'update_animations_popup')
-	var catchpr = popup.connect('index_pressed', self, 'print_idx')
-	if (catchp != OK) or (catchpr != OK):
+	var catchs = popup.connect('index_pressed', self, 'switch')
+	if (catchp != OK) or (catchs != OK):
 		push_error('Animation popup not found.')
 
-func print_idx(index = null):
-	print(index)
+func switch(index = null):
+	var new_animation = root_control.spriteframes.get_animation_names()[index]
+	root_control.set_animation(new_animation)
 
 func update_animations_popup():
 	var prev_idx = selected
