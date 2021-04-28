@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/editor/expose_config.gd" type="Script" id=1]
 [ext_resource path="res://src/class/timeline/panel.gd" type="Script" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://snivy/spr_tsuta_walk_0.png" type="Texture" id=38]
 [ext_resource path="res://snivy/spr_tsuta_walk_3.png" type="Texture" id=39]
 [ext_resource path="res://snivy/spr_tsuta_jump_0.png" type="Texture" id=40]
+[ext_resource path="res://src/class/upman.gd" type="Script" id=41]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -122,8 +123,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteView"]
-position = Vector2( 225, 256 )
+[node name="CenterContainer" type="CenterContainer" parent="SpriteView"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+margin_bottom = -48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="SpriteView/CenterContainer"]
+margin_left = 225.0
+margin_top = 16.0
+margin_right = 225.0
+margin_bottom = 16.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteView/CenterContainer/Control"]
 frames = SubResource( 2 )
 animation = "walk"
 
@@ -166,12 +182,12 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
 margin_top = 28.0
 margin_right = 181.0
-margin_bottom = 201.0
+margin_bottom = 257.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
 margin_right = 181.0
-margin_bottom = 173.0
+margin_bottom = 229.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -305,11 +321,12 @@ disabled = true
 text = "Password"
 
 [node name="FootSep" type="HSeparator" parent="Panel/VBoxContainer"]
-margin_top = 205.0
+margin_top = 261.0
 margin_right = 181.0
-margin_bottom = 209.0
+margin_bottom = 265.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+[node name="ThumbOffset" type="VBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
 margin_top = 213.0
 margin_right = 181.0
 margin_bottom = 265.0
@@ -317,7 +334,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ThumbOffset"]
 margin_right = 181.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
@@ -330,7 +347,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="AnimThumbOffset" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer"]
+[node name="Vector" type="HBoxContainer" parent="Panel/VBoxContainer/ThumbOffset"]
 margin_top = 28.0
 margin_right = 181.0
 margin_bottom = 52.0
@@ -338,12 +355,12 @@ rect_min_size = Vector2( 0, 24 )
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Width" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset"]
+[node name="Width" type="HBoxContainer" parent="Panel/VBoxContainer/ThumbOffset/Vector"]
 margin_left = 28.0
 margin_right = 88.0
 margin_bottom = 24.0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ThumbOffset/Vector/Width"]
 modulate = Color( 1, 1, 1, 0.498039 )
 margin_top = 4.0
 margin_right = 8.0
@@ -353,7 +370,7 @@ size_flags_stretch_ratio = 0.0
 text = "X"
 align = 1
 
-[node name="SizeX" type="SpinBox" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width"]
+[node name="SizeX" type="SpinBox" parent="Panel/VBoxContainer/ThumbOffset/Vector/Width"]
 margin_left = 12.0
 margin_right = 60.0
 margin_bottom = 24.0
@@ -365,12 +382,12 @@ step = 2.0
 align = 1
 script = ExtResource( 3 )
 
-[node name="Height" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset"]
+[node name="Height" type="HBoxContainer" parent="Panel/VBoxContainer/ThumbOffset/Vector"]
 margin_left = 92.0
 margin_right = 152.0
 margin_bottom = 24.0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ThumbOffset/Vector/Height"]
 modulate = Color( 1, 1, 1, 0.498039 )
 margin_top = 4.0
 margin_right = 8.0
@@ -380,7 +397,7 @@ size_flags_stretch_ratio = 0.0
 text = "Y"
 align = 1
 
-[node name="SizeY" type="SpinBox" parent="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height"]
+[node name="SizeY" type="SpinBox" parent="Panel/VBoxContainer/ThumbOffset/Vector/Height"]
 margin_left = 12.0
 margin_right = 60.0
 margin_bottom = 24.0
@@ -641,11 +658,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="UploadManager" type="FileDialog" parent="Popups"]
+margin_right = 300.0
+margin_bottom = 132.0
+script = ExtResource( 41 )
+
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width/SizeX" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height/SizeY" method="_on_gui_input"]
-[connection signal="gui_input" from="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width" to="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Width/SizeX" method="_on_gui_input"]
-[connection signal="gui_input" from="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height" to="Panel/VBoxContainer/VBoxContainer/AnimThumbOffset/Height/SizeY" method="_on_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer/ThumbOffset/Vector/Width" to="Panel/VBoxContainer/ThumbOffset/Vector/Width/SizeX" method="_on_gui_input"]
+[connection signal="gui_input" from="Panel/VBoxContainer/ThumbOffset/Vector/Height" to="Panel/VBoxContainer/ThumbOffset/Vector/Height/SizeY" method="_on_gui_input"]
 [connection signal="pressed" from="Panel/VBoxContainer/PickerHeader/New" to="." method="_on_New_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PickerHeader/Delete" to="." method="_on_Delete_pressed"]
 [connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Play" to="." method="_on_Play_pressed"]
@@ -653,3 +675,7 @@ __meta__ = {
 [connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/FromStart" to="." method="_on_FromStart_pressed"]
 [connection signal="gui_input" from="SpriteFrameEditor/FPS" to="SpriteFrameEditor/FPS/SpinBox" method="_on_gui_input"]
 [connection signal="value_changed" from="SpriteFrameEditor/FPS/SpinBox" to="." method="_on_FPS_changed"]
+[connection signal="pressed" from="SpriteFrameEditor/FileButtons/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="SpriteFrameEditor/FileButtons/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="SpriteFrameEditor/FileButtons/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="SpriteFrameEditor/FileButtons/New" to="." method="_on_New_pressed"]
