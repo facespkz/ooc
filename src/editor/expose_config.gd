@@ -57,6 +57,8 @@ func generate_animation():
 func set_animation(new_animation = 'idle'):
 	timeline.sprite.animation = new_animation
 	timeline.generate_projectors()
+	var new_fps = timeline.sprite.frames.get_animation_speed(new_animation)
+	$SpriteFrameEditor/FPS/SpinBox.value = new_fps
 	
 
 func _on_Play_pressed():
