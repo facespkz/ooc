@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/editor/expose_config.gd" type="Script" id=1]
 [ext_resource path="res://src/class/timeline/panel.gd" type="Script" id=2]
@@ -19,51 +19,17 @@
 [ext_resource path="res://asset/editor/remove/pressed.tres" type="Texture" id=17]
 [ext_resource path="res://asset/editor/remove/normal.tres" type="Texture" id=18]
 [ext_resource path="res://src/editor/update_animation_options.gd" type="Script" id=19]
-[ext_resource path="res://snivy/spr_tsuta_stand_5.png" type="Texture" id=20]
+[ext_resource path="res://snivy/sample_spriteframes.tres" type="SpriteFrames" id=20]
 [ext_resource path="res://asset/theme.tres" type="Theme" id=21]
-[ext_resource path="res://snivy/spr_tsuta_stand_2.png" type="Texture" id=22]
-[ext_resource path="res://snivy/spr_tsuta_stand_1.png" type="Texture" id=23]
-[ext_resource path="res://snivy/spr_tsuta_stand_6.png" type="Texture" id=24]
-[ext_resource path="res://snivy/spr_tsuta_stand_0.png" type="Texture" id=25]
-[ext_resource path="res://snivy/spr_tsuta_stand_4.png" type="Texture" id=26]
-[ext_resource path="res://snivy/spr_tsuta_stand_3.png" type="Texture" id=27]
 [ext_resource path="res://asset/tile_floor.png" type="Texture" id=28]
-[ext_resource path="res://snivy/spr_tsuta_stand_7.png" type="Texture" id=29]
-[ext_resource path="res://snivy/spr_tsuta_stand_8.png" type="Texture" id=30]
-[ext_resource path="res://snivy/spr_tsuta_stand_9.png" type="Texture" id=31]
-[ext_resource path="res://snivy/spr_tsuta_stand_10.png" type="Texture" id=32]
-[ext_resource path="res://snivy/spr_tsuta_stand_11.png" type="Texture" id=33]
 [ext_resource path="res://asset/tile_earth.png" type="Texture" id=34]
 [ext_resource path="res://asset/background/bg_color.png" type="Texture" id=35]
-[ext_resource path="res://snivy/spr_tsuta_walk_2.png" type="Texture" id=36]
-[ext_resource path="res://snivy/spr_tsuta_walk_1.png" type="Texture" id=37]
-[ext_resource path="res://snivy/spr_tsuta_walk_0.png" type="Texture" id=38]
-[ext_resource path="res://snivy/spr_tsuta_walk_3.png" type="Texture" id=39]
-[ext_resource path="res://snivy/spr_tsuta_jump_0.png" type="Texture" id=40]
 [ext_resource path="res://src/class/upman.gd" type="Script" id=41]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 25 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
-"loop": true,
-"name": "idle",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 40 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "jump",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "walk",
-"speed": 6.0
-} ]
-
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.184314, 0.231373, 0.239216, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -71,7 +37,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.0980392, 0.113725, 0.156863, 1 )
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -140,7 +106,7 @@ margin_right = 225.0
 margin_bottom = 16.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteView/CenterContainer/Control"]
-frames = SubResource( 2 )
+frames = ExtResource( 20 )
 animation = "walk"
 
 [node name="Panel" type="Panel" parent="."]
@@ -150,7 +116,7 @@ anchor_bottom = 1.0
 margin_left = -190.0
 margin_bottom = -79.0
 rect_min_size = Vector2( 184, 0 )
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -464,7 +430,7 @@ anchor_bottom = 1.0
 margin_top = -80.0
 rect_min_size = Vector2( 164, 56 )
 rect_clip_content = true
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -564,7 +530,7 @@ margin_bottom = 33.0
 rect_min_size = Vector2( 32, 0 )
 hint_tooltip = "Scroll-wheel can change FPS"
 size_flags_horizontal = 4
-custom_icons/updown = SubResource( 4 )
+custom_icons/updown = SubResource( 3 )
 min_value = 1.0
 max_value = 20.0
 value = 6.0
