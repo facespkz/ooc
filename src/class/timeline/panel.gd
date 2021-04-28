@@ -11,14 +11,24 @@ var thumb_offset: Vector2
 var c = {
 	'items': HBoxContainer.new(),
 	'separator': VSeparator.new(),
-	'animation_player': AnimationPlayer.new(),
 }
 
 export(Vector2) var box_size = Vector2(32, 32)
 export(float) var padding = 8
 
+func grab_sprite_frames():
+	var frames: Array
+	var current: String = sprite.animation
+	var frame_count: int = sprite.frames.get_frame_count(current)
+	
+	for idx in range(frame_count):
+		frames.append(sprite.frames.get_frame(current, idx))
+	sprite_array = frames
+	return frames
+		
 
 func _init():
+	sprite = AnimatedSprite.new()
 	rect_clip_content = true
 	
 	c.items.set_anchors_preset(Control.PRESET_CENTER)
@@ -35,20 +45,33 @@ func _init():
 
 func _ready():
 	c.items.set('custom_constants/separation', padding)
-	
-	var amount = 4
-	for i in range(amount):
-		sprite_array.append(
-			load('res://asset/act_test/act_test%s.tres' % (i % 4)))
-		c.items.add_child(TimelineProjector.new())
-	adjust()
-	reset_projectors()
+	sprite.connect('frame_changed', self, 'cursor_set', [-1])
+#	generate_projectors()
+#	var amount = 4
+#	for i in range(amount):
+#		sprite_array.append(
+#			load('res://asset/act_test/act_test%s.tres' % (i % 4)))
+#		c.items.add_child(TimelineProjector.new())
+#	adjust()
+#	reset_projectors()
 	pass
 
+func generate_projectors():
+	grab_sprite_frames()
+	for child in c.items.get_children():
+		child.queue_free()
+	for texture in sprite_array:
+		var projector = TimelineProjector.new()
+		c.items.add_child(projector)
+		projector.sprite.texture = texture
+		
+#	adjust()
+	
 
 func set_sprite(new_sprite: AnimatedSprite):
+	if !new_sprite.is_connected("frame_changed", self, 'cursor_set'):
+		new_sprite.connect("frame_changed", self, 'cursor_set', [-1])
 	sprite = new_sprite
-	new_sprite.connect('frame_changed', self, 'cursor_set', [-1])
 	pass
 
 
@@ -64,15 +87,20 @@ func _gui_input(event):
 
 
 func trade(old_index, new_index):
+	var current: String = sprite.animation
 	new_index = clamp(new_index, 0, c.items.get_child_count() - 1)
 	
 	var old_sprites = [sprite_array[old_index], sprite_array[new_index]]
 	sprite_array[old_index] = old_sprites[1]
 	sprite_array[new_index] = old_sprites[0]
+	sprite.frames.set_frame(current, old_index, old_sprites[1])
+	sprite.frames.set_frame(current, new_index, old_sprites[0])
+	sprite.update()
 	reset_projectors()
 
 # this setup is kinda stupid, but i can't seem to do it the other way
 func reset_projectors():
+#	grab_sprite_frames()
 	var items = c.items.get_children()
 	for i in range(sprite_array.size()):
 		items[i].sprite.set_texture(sprite_array[i])
