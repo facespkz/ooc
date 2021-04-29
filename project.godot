@@ -74,10 +74,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ourpoke"
+config/name="Out Of Character"
 run/main_scene="res://scene/Title.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="pokeftr"
+config/custom_user_dir_name="ooc"
 boot_splash/image="res://asset/godot/abbey.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
