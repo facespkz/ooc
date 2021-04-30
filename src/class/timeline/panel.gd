@@ -70,7 +70,7 @@ func generate_projectors():
 
 func set_sprite(new_sprite: AnimatedSprite):
 	if !new_sprite.is_connected("frame_changed", self, 'cursor_set'):
-		new_sprite.connect("frame_changed", self, 'cursor_set', [-1])
+		new_sprite.connect("frame_changed", self, 'cursor_set', [0, true])
 	sprite = new_sprite
 	pass
 
@@ -106,13 +106,14 @@ func reset_projectors():
 		items[i].sprite.set_texture(sprite_array[i])
 
 
-func cursor_set(new_value: int):
+func cursor_set(new_value: int, frame_changed: bool = false):
 	var hbox_max = c.items.get_child_count() - 1
 	var delta
 	
-	if new_value == -1:
+	if frame_changed:
 		new_value = sprite.frame
-	elif new_value > hbox_max:
+	
+	if new_value > hbox_max:
 		new_value = hbox_max
 	else:
 		sprite.frame = new_value
