@@ -15,7 +15,7 @@ func _on_Multiplayer_pressed():
 
 func _on_Editor_pressed():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene('res://scene/Editor.tscn')
+	get_tree().change_scene('res://scene/editor.tscn')
 
 func test_icle(file_data):
 	print(file_data)
