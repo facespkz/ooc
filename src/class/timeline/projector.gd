@@ -33,18 +33,19 @@ func _init():
 	if (exit_err != OK) and (enter_err != OK):
 		push_error('For some reason, the mouse signals are broken.')
 
-func align_region(new_value: Texture):
-	if (new_value.get_width() > 32) or (new_value.get_height() > 32):
+func align_region(new_texture: Texture):
+	if new_texture.get_size > box_size2:
 		sprite.region_enabled = true
-	sprite.texture = new_value
+	sprite.texture = new_texture
 	sprite.position = box_size
 	pass
 
 func _enter_tree():
 	panel = get_parent().get_parent()
 	box_size2 = panel.box_size
-	box_size = Vector2(box_size2.x / 2, box_size2.y / 2)
+	box_size = box_size2 / Vector2(2, 2)
 	padding = panel.padding
+	
 	rect_min_size = box_size2
 	shape.extents = box_size
 	sprite.position = box_size
