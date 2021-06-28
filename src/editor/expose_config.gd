@@ -3,7 +3,6 @@ extends Control
 var anim_name_popup: ConfirmationDialog
 var anim_name_textbox: LineEdit
 var timeline: Timeline
-var sprite: AnimatedSprite
 var sf: SpriteFrameConverter
 export var spriteframes: SpriteFrames
 
@@ -22,6 +21,8 @@ func _ready():
 #	OS.set_window_title('Character Editing Simulator')
 	timeline.generate_projectors()
 	sf = SpriteFrameConverter.new()
+	set_animation(spriteframes.get_animation_names()[0])
+	$Panel/VBoxContainer/AnimationPicker.update_animations_popup()
 	pass
 
 
