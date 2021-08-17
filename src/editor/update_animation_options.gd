@@ -1,10 +1,6 @@
 extends OptionButton
 
 var root_control: Control
-var selected_animation: String
-
-signal animation_changed
-
 
 func _ready():
 	root_control = get_tree().get_root().get_node('Control')
@@ -19,9 +15,9 @@ func _enter_tree():
 
 func switch(index = null):
 	var new_animation = root_control.spriteframes.get_animation_names()[index]
-	root_control.set_animation(new_animation)
+	root_control.emit_signal("set_animation", new_animation)
 
-func update_animations_popup():
+func update_animations_popup(_animation_name):
 	var prev_idx = selected
 	clear()
 	for item in root_control.spriteframes.get_animation_names():

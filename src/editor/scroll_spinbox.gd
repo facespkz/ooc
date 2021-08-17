@@ -9,3 +9,9 @@ func _on_gui_input(event):
 				value += step
 			5:
 				value -= step
+
+
+
+func _on_Timeline_fps_changed(new_fps):
+	value = new_fps
+	pass # Replace with function body.

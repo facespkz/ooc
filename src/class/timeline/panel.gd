@@ -16,6 +16,8 @@ var c = {
 export(Vector2) var box_size = Vector2(32, 32)
 export(float) var padding = 8
 
+signal fps_changed(new_fps)
+
 func grab_sprite_frames():
 	var frames: Array
 	var current: String = sprite.animation
@@ -26,6 +28,11 @@ func grab_sprite_frames():
 	sprite_array = frames
 	return frames
 		
+
+func _on_set_animation(new_animation = 'idle'):
+	sprite.animation = new_animation
+	generate_projectors()
+	emit_signal("fps_changed", sprite.frames.get_animation_speed(new_animation))
 
 func _init():
 	sprite = AnimatedSprite.new()
@@ -55,6 +62,18 @@ func _ready():
 #	adjust()
 #	reset_projectors()
 	pass
+
+func _on_Play_pressed():
+	sprite.play(sprite.animation)
+
+func _on_Pause_pressed():
+	sprite.stop()
+
+func _on_FromStart_pressed():
+	sprite.stop()
+	cursor_set(0)
+	sprite.play()
+
 
 func generate_projectors():
 	grab_sprite_frames()
@@ -131,3 +150,4 @@ func cursor_set_sprite() -> void:
 func adjust():
 	padding = c.items.get('custom_constants/separation')
 	c.items.margin_left = -sprite_index * (box_size.x + padding)
+

@@ -629,6 +629,8 @@ margin_right = 300.0
 margin_bottom = 132.0
 script = ExtResource( 41 )
 
+[connection signal="set_animation" from="." to="Panel/VBoxContainer/AnimationPicker" method="update_animations_popup"]
+[connection signal="set_animation" from="." to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_set_animation"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width/SizeX" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height/SizeY" method="_on_gui_input"]
@@ -636,9 +638,10 @@ script = ExtResource( 41 )
 [connection signal="gui_input" from="Panel/VBoxContainer/ThumbOffset/Vector/Height" to="Panel/VBoxContainer/ThumbOffset/Vector/Height/SizeY" method="_on_gui_input"]
 [connection signal="pressed" from="Panel/VBoxContainer/PickerHeader/New" to="." method="_on_New_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PickerHeader/Delete" to="." method="_on_Delete_pressed"]
-[connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Pause" to="." method="_on_Pause_pressed"]
-[connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/FromStart" to="." method="_on_FromStart_pressed"]
+[connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Play" to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_Play_pressed"]
+[connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Pause" to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_Pause_pressed"]
+[connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/FromStart" to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_FromStart_pressed"]
+[connection signal="fps_changed" from="SpriteFrameEditor/VBoxContainer/Timeline" to="SpriteFrameEditor/FPS/SpinBox" method="_on_Timeline_fps_changed"]
 [connection signal="gui_input" from="SpriteFrameEditor/FPS" to="SpriteFrameEditor/FPS/SpinBox" method="_on_gui_input"]
 [connection signal="value_changed" from="SpriteFrameEditor/FPS/SpinBox" to="." method="_on_FPS_changed"]
 [connection signal="pressed" from="SpriteFrameEditor/FileButtons/Exit" to="." method="_on_Exit_pressed"]

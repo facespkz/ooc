@@ -6,6 +6,8 @@ var timeline: Timeline
 var sf: SpriteFrameConverter
 export var spriteframes: SpriteFrames
 
+signal set_animation(new_animation)
+
 # export(AnimatedSprite) var character
 
 func _ready():
@@ -19,10 +21,8 @@ func _ready():
 	if OS.get_name() != "Android":
 		OS.low_processor_usage_mode = true
 #	OS.set_window_title('Character Editing Simulator')
-	timeline.generate_projectors()
 	sf = SpriteFrameConverter.new()
-	set_animation(spriteframes.get_animation_names()[0])
-	$Panel/VBoxContainer/AnimationPicker.update_animations_popup()
+	emit_signal("set_animation", spriteframes.get_animation_names()[0])
 	pass
 
 
@@ -54,26 +54,7 @@ func _on_Delete_pressed():
 func generate_animation():
 	
 	pass
-
-func set_animation(new_animation = 'idle'):
-	timeline.sprite.animation = new_animation
-	timeline.generate_projectors()
-	var new_fps = timeline.sprite.frames.get_animation_speed(new_animation)
-	$SpriteFrameEditor/FPS/SpinBox.value = new_fps
 	
-
-func _on_Play_pressed():
-	timeline.sprite.play(timeline.sprite.animation)
-
-
-func _on_Pause_pressed():
-	timeline.sprite.stop()
-
-
-func _on_FromStart_pressed():
-	timeline.cursor_set(0)
-	timeline.sprite.play()
-
 
 func _on_FPS_changed(value):
 	spriteframes.set_animation_speed(timeline.sprite.animation, value)
