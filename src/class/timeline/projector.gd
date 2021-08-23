@@ -4,8 +4,6 @@ class_name TimelineProjector
 #var texture: Texture setget align_region
 
 var sprite: Sprite = Sprite.new()
-var collision: CollisionShape2D = CollisionShape2D.new()
-var shape: Shape2D = RectangleShape2D.new()
 var colors: PoolColorArray = [
 	'#4000', # default / non-hover
 	'#9333', # hover
@@ -23,11 +21,9 @@ var panel: ColorRect
 func _init():
 	var exit_err
 	var enter_err
-	collision.shape = shape
 	color = colors[0]
 	
 	add_child(sprite)
-	add_child(collision)
 	exit_err = connect('mouse_exited', self, 'set_frame_color', [colors[0]])
 	enter_err = connect('mouse_entered', self, 'set_frame_color', [colors[1]])
 	if (exit_err != OK) and (enter_err != OK):
@@ -47,7 +43,6 @@ func _enter_tree():
 	padding = panel.padding
 	
 	rect_min_size = box_size2
-	shape.extents = box_size
 	sprite.position = box_size
 
 func _ready():
