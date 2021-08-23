@@ -35,24 +35,14 @@ func _on_set_animation(new_animation = 'idle'):
 	emit_signal("fps_changed", sprite.frames.get_animation_speed(new_animation))
 
 func _init():
-	sprite = AnimatedSprite.new()
-	rect_clip_content = true
+#	sprite = AnimatedSprite.new()
+#	rect_clip_content = true
 	
-	c.items.set_anchors_preset(Control.PRESET_CENTER)
-	c.items.rect_position.y -= box_size.y / 2
-	
-	c.separator.set('custom_constants/separation', 0)
-	c.separator.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	c.separator.rect_size = Vector2(0, rect_size.y)
-	
-	for node in c:
-		add_child(c[node])
 	pass
 
 
 func _ready():
-	c.items.set('custom_constants/separation', padding)
-	sprite.connect('frame_changed', self, 'cursor_set', [-1])
+#	sprite.connect('frame_changed', self, 'cursor_set', [-1])
 #	generate_projectors()
 #	var amount = 4
 #	for i in range(amount):
@@ -77,11 +67,11 @@ func _on_FromStart_pressed():
 
 func generate_projectors():
 	grab_sprite_frames()
-	for child in c.items.get_children():
+	for child in $Items.get_children():
 		child.queue_free()
 	for texture in sprite_array:
 		var projector = TimelineProjector.new()
-		c.items.add_child(projector)
+		$Items.add_child(projector)
 		projector.sprite.texture = texture
 		
 #	adjust()
@@ -107,7 +97,7 @@ func _gui_input(event):
 
 func trade(old_index, new_index):
 	var current: String = sprite.animation
-	new_index = clamp(new_index, 0, c.items.get_child_count() - 1)
+	new_index = clamp(new_index, 0, $Items.get_child_count() - 1)
 	
 	var old_sprites = [sprite_array[old_index], sprite_array[new_index]]
 	sprite_array[old_index] = old_sprites[1]
@@ -120,13 +110,13 @@ func trade(old_index, new_index):
 # this setup is kinda stupid, but i can't seem to do it the other way
 func reset_projectors():
 #	grab_sprite_frames()
-	var items = c.items.get_children()
+	var items = $Items.get_children()
 	for i in range(sprite_array.size()):
 		items[i].sprite.set_texture(sprite_array[i])
 
 
 func cursor_set(new_value: int):
-	var hbox_max = c.items.get_child_count() - 1
+	var hbox_max = $Items.get_child_count() - 1
 	var delta
 	
 	if new_value > hbox_max:
@@ -148,6 +138,6 @@ func cursor_set_sprite() -> void:
 	pass
 
 func adjust():
-	padding = c.items.get('custom_constants/separation')
-	c.items.margin_left = -sprite_index * (box_size.x + padding)
+	padding = $Items.get('custom_constants/separation')
+	$Items.margin_left = -sprite_index * (box_size.x + padding)
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/editor/expose_config.gd" type="Script" id=1]
-[ext_resource path="res://src/class/timeline/panel.gd" type="Script" id=2]
+[ext_resource path="res://scene/Timeline.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/editor/scroll_spinbox.gd" type="Script" id=3]
 [ext_resource path="res://asset/editor/pause/normal.tres" type="Texture" id=4]
 [ext_resource path="res://asset/editor/play/hover.tres" type="Texture" id=5]
@@ -488,13 +488,13 @@ __meta__ = {
 "_editor_description_": "I would've done a loop but I'm shit at doing circles :("
 }
 
-[node name="Timeline" type="ColorRect" parent="SpriteFrameEditor/VBoxContainer"]
+[node name="Timeline" parent="SpriteFrameEditor/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
 margin_top = 20.0
 margin_right = 584.0
-margin_bottom = 69.0
-size_flags_vertical = 3
-color = Color( 0, 0, 0, 0.235294 )
-script = ExtResource( 2 )
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 48 )
+color = Color( 0, 0, 0, 0.254902 )
 
 [node name="FPS" type="VBoxContainer" parent="SpriteFrameEditor"]
 anchor_top = 1.0
@@ -629,8 +629,8 @@ margin_right = 300.0
 margin_bottom = 132.0
 script = ExtResource( 41 )
 
-[connection signal="set_animation" from="." to="Panel/VBoxContainer/AnimationPicker" method="update_animations_popup"]
 [connection signal="set_animation" from="." to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_set_animation"]
+[connection signal="set_animation" from="." to="Panel/VBoxContainer/AnimationPicker" method="update_animations_popup"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Speed/Speed" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Width/SizeX" method="_on_gui_input"]
 [connection signal="gui_input" from="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height" to="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Size/HBoxContainer/Height/SizeY" method="_on_gui_input"]
@@ -641,7 +641,6 @@ script = ExtResource( 41 )
 [connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Play" to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_Play_pressed"]
 [connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/Pause" to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_Pause_pressed"]
 [connection signal="pressed" from="SpriteFrameEditor/VBoxContainer/Playback/FromStart" to="SpriteFrameEditor/VBoxContainer/Timeline" method="_on_FromStart_pressed"]
-[connection signal="fps_changed" from="SpriteFrameEditor/VBoxContainer/Timeline" to="SpriteFrameEditor/FPS/SpinBox" method="_on_Timeline_fps_changed"]
 [connection signal="gui_input" from="SpriteFrameEditor/FPS" to="SpriteFrameEditor/FPS/SpinBox" method="_on_gui_input"]
 [connection signal="value_changed" from="SpriteFrameEditor/FPS/SpinBox" to="." method="_on_FPS_changed"]
 [connection signal="pressed" from="SpriteFrameEditor/FileButtons/Exit" to="." method="_on_Exit_pressed"]
