@@ -4,10 +4,8 @@ class_name TimelineProjector
 #var texture: Texture setget align_region
 
 var sprite: Sprite = Sprite.new()
-var colors: PoolColorArray = [
-	'#4000', # default / non-hover
-	'#9333', # hover
-]
+export(Color) var normal_color = '#4000'
+export(Color) var hover_color = '#9333'
 
 # this is the 'real' size of the box
 var box_size2: Vector2
@@ -21,11 +19,11 @@ var panel: ColorRect
 func _init():
 	var exit_err
 	var enter_err
-	color = colors[0]
+	color = normal_color
 	
 	add_child(sprite)
-	exit_err = connect('mouse_exited', self, 'set_frame_color', [colors[0]])
-	enter_err = connect('mouse_entered', self, 'set_frame_color', [colors[1]])
+	exit_err = connect('mouse_exited', self, 'set_frame_color', [normal_color])
+	enter_err = connect('mouse_entered', self, 'set_frame_color', [hover_color])
 	if (exit_err != OK) and (enter_err != OK):
 		push_error('For some reason, the mouse signals are broken.')
 
