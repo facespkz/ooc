@@ -3,7 +3,7 @@ class_name TimelineProjector
 
 #var texture: Texture setget align_region
 
-var sprite: Sprite = Sprite.new()
+var sprite: Sprite
 export(Color) var normal_color = '#4000'
 export(Color) var hover_color = '#9333'
 
@@ -21,7 +21,6 @@ func _init():
 	var enter_err
 	color = normal_color
 	
-	add_child(sprite)
 	exit_err = connect('mouse_exited', self, 'set_frame_color', [normal_color])
 	enter_err = connect('mouse_entered', self, 'set_frame_color', [hover_color])
 	if (exit_err != OK) and (enter_err != OK):
@@ -35,6 +34,7 @@ func align_region(new_texture: Texture):
 	pass
 
 func _enter_tree():
+	sprite = $Sprite
 	panel = get_parent().get_parent()
 	box_size2 = panel.box_size
 	box_size = box_size2 / Vector2(2, 2)

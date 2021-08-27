@@ -6,6 +6,7 @@ var sprite: AnimatedSprite setget set_sprite
 var sprite_index := 0 setget cursor_set
 var sprite_array: Array
 var thumb_offset: Vector2
+var projector_scene := preload("res://scene/TimelineProjector.tscn")
 
 # c stands for control :3
 var c = {
@@ -70,7 +71,7 @@ func generate_projectors():
 	for child in $Items.get_children():
 		child.queue_free()
 	for texture in sprite_array:
-		var projector = TimelineProjector.new()
+		var projector = projector_scene.instance()
 		$Items.add_child(projector)
 		projector.sprite.texture = texture
 		
