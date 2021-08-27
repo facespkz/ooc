@@ -6,7 +6,7 @@ var sprite: AnimatedSprite setget set_sprite
 var sprite_index := 0 setget cursor_set
 var sprite_array: Array
 var thumb_offset: Vector2
-var projector_scene := preload("res://scene/TimelineProjector.tscn")
+var projector_scene := preload("res://scene/editor/projector.tscn")
 
 # c stands for control :3
 var c = {

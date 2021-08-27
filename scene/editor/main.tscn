@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/editor/expose_config.gd" type="Script" id=1]
-[ext_resource path="res://scene/Timeline.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/editor/timeline.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/editor/scroll_spinbox.gd" type="Script" id=3]
 [ext_resource path="res://asset/editor/pause/normal.tres" type="Texture" id=4]
 [ext_resource path="res://asset/editor/play/hover.tres" type="Texture" id=5]
