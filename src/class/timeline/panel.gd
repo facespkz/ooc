@@ -119,9 +119,6 @@ func cursor_set(new_value: int):
 	var hbox_max = $Items.get_child_count() - 1
 	var delta
 	
-	if new_value > hbox_max:
-		new_value = hbox_max
-#	else:
 	sprite.frame = new_value
 	
 	delta = new_value - sprite_index
